@@ -12,4 +12,4 @@ fi
 
 feh --bg-fill /home/andrew/background.png
 
-setxkbmap -layout gb -variant dvorak -option ctrl:nocaps -display
+setxkbmap -layout gb -variant dvorak -option ctrl:nocaps
