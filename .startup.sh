@@ -5,13 +5,6 @@ BROWSER="google-chrome"
 PASSWORDS="keepassx"
 
 MAIL_URL1="https://mail.google.com/mail/u/0"
-MAIL_URL2="https://mail.google.com/mail/u/1"
-
-SLACK_URL="https://isotoma.slack.com/messages/isotoma/"
-
-NEW_RELIC_URL="https://rpm.newrelic.com/"
-AWS_URL="https://console.aws.amazon.com/console/home"
-PAGER_DUTY_URL="https://www.pagerduty.com/"
 
 LAPTOPS=(
 	"x220"
@@ -40,8 +33,6 @@ is_laptop() {
 start_comms() {
 	WORKSPACE="$1"
 	open_window "$BROWSER $MAIL_URL1 --new-window" $WORKSPACE
-	open_window "$BROWSER $MAIL_URL2" $WORKSPACE
-	open_window "$BROWSER $SLACK_URL" $WORKSPACE
 }
 
 laptop_startup() {
@@ -60,22 +51,12 @@ desktop_startup() {
 	wmctrl -s 0
 }
 
-call_windows() {
-	open_window "$BROWSER $PAGER_DUTY_URL --new-window" 0
-	open_window "$BROWSER $AWS_URL" 0
-	open_window "$BROWSER $NEW_RELIC_URL" 0
-}
-
 main() {
 	COMMAND="$1"
-	if [[ $COMMAND == "call" ]]; then
-		call_windows
+	if is_laptop; then
+		laptop_startup
 	else
-		if is_laptop; then
-			laptop_startup
-		else
-			desktop_startup
-		fi
+		desktop_startup
 	fi
 }
 
