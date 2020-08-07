@@ -7,7 +7,7 @@ export DISPLAY XAUTHORITY HOME
 
 if [ ! -f "/home/andrew/background.png" ]
 then
-    wget http://p1.pichost.me/i/21/1443974.png -O "/home/andrew/background.png"
+    wget 'https://raw.githubusercontent.com/hemanth/haskell-rascal/master/imgs/swahili.png' -O "/home/andrew/background.png"
 fi
 
 feh --bg-fill /home/andrew/background.png

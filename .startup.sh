@@ -1,10 +1,12 @@
 #!/bin/bash
 
 TERMINAL_EMULATOR="gnome-terminal --hide-menubar"
-BROWSER="google-chrome"
-PASSWORDS="keepassx"
+# BROWSER="google-chrome"
+BROWSER="firefox"
+PASSWORDS="keepass"
 
 MAIL_URL1="https://mail.google.com/mail/u/0"
+MAIL_URL2="https://mail.google.com/mail/u/1"
 
 LAPTOPS=(
 	"x220"
@@ -33,6 +35,7 @@ is_laptop() {
 start_comms() {
 	WORKSPACE="$1"
 	open_window "$BROWSER $MAIL_URL1 --new-window" $WORKSPACE
+    open_window "$BROWSER $MAIL_URL2" $WORKSPACE
 }
 
 laptop_startup() {
@@ -60,5 +63,6 @@ main() {
 	fi
 }
 
-
-main $@
+if ! pgrep -f chrome/chrome; then
+    main $@
+fi
