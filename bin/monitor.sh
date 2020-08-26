@@ -1,10 +1,10 @@
 #!/bin/bash
 
 monitors=(
-    "eDP1"
-    # "DP1:scale=2x2"
-    "DP1"
-    "DP2"
+    "eDP-1"
+    "DP-1:scale=2x2"
+    # "DP-1"
+    # "DP2"
     #"DP1:scale=1x1"
     #"DP1:scale=0.5x0.5"
 )
