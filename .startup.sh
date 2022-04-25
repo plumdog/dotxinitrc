@@ -7,6 +7,13 @@ PASSWORDS="keepass"
 
 MAIL_URL1="https://mail.google.com/mail/u/0"
 MAIL_URL2="https://mail.google.com/mail/u/1"
+KEEP_URL="https://keep.google.com/u/0/"
+CALENDAR_URL="https://calendar.google.com/calendar/u/0/r"
+if [[ -f ~/.startup_extra ]]; then
+    # Can set the following:
+    # SLACK_URL
+    source ~/.startup_extra
+fi
 
 LAPTOPS=(
 	"x220"
@@ -35,7 +42,13 @@ is_laptop() {
 start_comms() {
 	WORKSPACE="$1"
 	open_window "$BROWSER $MAIL_URL1 --new-window" $WORKSPACE
-    open_window "$BROWSER $MAIL_URL2" $WORKSPACE
+	open_window "$BROWSER $MAIL_URL2" $WORKSPACE
+	if [[ -n "$SLACK_URL" ]]; then
+		open_window "$SLACK_URL" $WORKSPACE
+	fi
+	open_window "$BROWSER $CALENDAR_URL" $WORKSPACE
+	open_window "$BROWSER $KEEP_URL" $WORKSPACE
+	open_window "signal-desktop" $WORKSPACE
 }
 
 laptop_startup() {
@@ -63,6 +76,6 @@ main() {
 	fi
 }
 
-if ! pgrep -f chrome/chrome; then
+if ! pgrep -f firefox/firefox; then
     main $@
 fi
