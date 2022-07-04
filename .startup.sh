@@ -56,7 +56,6 @@ laptop_startup() {
 	start_comms 1
 	open_window "$BROWSER --new-window" 1
 	open_window "$PASSWORDS" 2
-	gnome-terminal -- ./bin/downloads_scan.sh
 	wmctrl -s 0
 }
 
@@ -65,7 +64,6 @@ desktop_startup() {
 	open_window "$BROWSER --new-window" 1
 	start_comms 2
 	open_window "$PASSWORDS" 3
-	gnome-terminal -- ./bin/downloads_scan.sh
 	wmctrl -s 0
 }
 
