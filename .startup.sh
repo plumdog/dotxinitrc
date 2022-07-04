@@ -11,7 +11,7 @@ KEEP_URL="https://keep.google.com/u/0/"
 CALENDAR_URL="https://calendar.google.com/calendar/u/0/r"
 if [[ -f ~/.startup_extra ]]; then
     # Can set the following:
-    # SLACK_URL
+    # CHAT_URLS, array of URLs to open in the communication window
     source ~/.startup_extra
 fi
 
@@ -43,8 +43,10 @@ start_comms() {
 	WORKSPACE="$1"
 	open_window "$BROWSER $MAIL_URL1 --new-window" $WORKSPACE
 	open_window "$BROWSER $MAIL_URL2" $WORKSPACE
-	if [[ -n "$SLACK_URL" ]]; then
-		open_window "$SLACK_URL" $WORKSPACE
+	if [[ ! -z "$CHAT_URLS" ]]; then
+            for chat_url in "${CHAT_URLS[@]}"; do
+		open_window "$BROWSER $chat_url" $WORKSPACE
+            done
 	fi
 	open_window "$BROWSER $CALENDAR_URL" $WORKSPACE
 	open_window "$BROWSER $KEEP_URL" $WORKSPACE
