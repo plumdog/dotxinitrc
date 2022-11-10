@@ -1,8 +1,8 @@
 #!/bin/bash
 
 TERMINAL_EMULATOR="gnome-terminal --hide-menubar"
-# BROWSER="google-chrome"
-BROWSER="firefox"
+BROWSER="google-chrome"
+# BROWSER="firefox"
 PASSWORDS="keepass"
 
 MAIL_URL1="https://mail.google.com/mail/u/0"
