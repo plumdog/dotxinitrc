@@ -6,7 +6,7 @@ BROWSER="google-chrome"
 PASSWORDS="keepass"
 
 MAIL_URL1="https://mail.google.com/mail/u/0"
-MAIL_URL2="https://mail.google.com/mail/u/1"
+# MAIL_URL2="https://mail.google.com/mail/u/1"
 KEEP_URL="https://keep.google.com/u/0/"
 CALENDAR_URL="https://calendar.google.com/calendar/u/0/r"
 if [[ -f ~/.startup_extra ]]; then
@@ -42,7 +42,9 @@ is_laptop() {
 start_comms() {
 	WORKSPACE="$1"
 	open_window "$BROWSER $MAIL_URL1 --new-window" $WORKSPACE
-	open_window "$BROWSER $MAIL_URL2" $WORKSPACE
+        if [[ -n $MAIL_URL2 ]]; then
+	    open_window "$BROWSER $MAIL_URL2" $WORKSPACE
+        fi
 	if [[ ! -z "$CHAT_URLS" ]]; then
             for chat_url in "${CHAT_URLS[@]}"; do
 		open_window "$BROWSER $chat_url" $WORKSPACE
